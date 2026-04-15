@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
       // 应用排序
       query = query.order(sortBy, { ascending: true });
 
-      const { data, error } = await query;
+      const { data, error } = await query.execute();
       if (error) throw error;
       setTasks(data || []);
     } catch (error) {
@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
       const { error } = await supabase.from('tasks').insert({
         ...newTask,
         user_id: user.id,
-      });
+      }).execute();
       if (error) throw error;
 
       setShowAddModal(false);
@@ -86,7 +86,8 @@ const HomePage: React.FC = () => {
       const { error } = await supabase
         .from('tasks')
         .update({ status: 'completed' })
-        .eq('id', taskId);
+        .eq('id', taskId)
+        .execute();
       if (error) throw error;
       fetchTasks();
     } catch (error) {
