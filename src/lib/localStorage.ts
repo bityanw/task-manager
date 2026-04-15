@@ -217,6 +217,6 @@ export const supabase = {
     if (table === 'tasks') {
       return tasks;
     }
-    return {};
+    return {} as any;
   },
 };
