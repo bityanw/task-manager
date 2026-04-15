@@ -5,10 +5,10 @@ import { traeBadgePlugin } from 'vite-plugin-trae-solo-badge';
 
 // https://vite.dev/config/
 export default defineConfig({
-  publicDir: 'public-static',
+  publicDir: 'public',
   build: {
     sourcemap: 'hidden',
-    outDir: 'public',
+    outDir: 'dist',
     emptyOutDir: true,
   },
   plugins: [
